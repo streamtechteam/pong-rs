@@ -1,8 +1,5 @@
 mod window;
-use raylib::{
-    RaylibThread,
-    math::{Rectangle, Vector2},
-};
+use raylib::math::{Rectangle, Vector2};
 use window::Window;
 
 mod game;
@@ -16,7 +13,6 @@ fn main() {
         .fullscreen()
         .build();
     rl.set_target_fps(120);
-    rl.trace_log(raylib::ffi::TraceLogLevel::LOG_ERROR, "test");
     let mut game = Game {
         window: Window {
             width: rl.get_render_width(),

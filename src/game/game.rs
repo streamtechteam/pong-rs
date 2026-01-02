@@ -28,6 +28,7 @@ pub struct Game {
 
 impl Game {
     pub fn start(&mut self, rl: &RaylibHandle) {
+
         // println!("{}", self.window.height);
         self.left_paddle.y = (self.window.height_slice * 6) as f32;
         self.left_paddle.x = (self.window.width_slice * 1) as f32;
@@ -36,7 +37,7 @@ impl Game {
         self.right_paddle.y = (self.window.height_slice * 6) as f32;
         self.right_paddle.x = (self.window.width_slice) as f32 * 12.;
 
-        self.get_ball_direction(rl.get_frame_time());
+        self.get_ball_direction();
 
         self.ball_pos.x = (self.window.width_slice * 6) as f32;
         self.ball_pos.y = (self.window.height_slice * 6) as f32;
@@ -202,7 +203,7 @@ impl Game {
         if d.is_key_pressed(ffi::KeyboardKey::KEY_SEMICOLON) {
             self.show_debug = !self.show_debug;
         }
-        if (self.show_debug) {
+        if self.show_debug {
             d.draw_fps(40, 40);
         }
     }
@@ -303,16 +304,16 @@ impl Game {
         self.ball_pos += self.ball_velocity;
     }
 
-    fn get_ball_direction(&mut self, dt: f32) {
+    fn get_ball_direction(&mut self) {
         let is_left = rand::rng().random_bool(0.5);
         // println!("{}", dt);
         if is_left {
-            self.ball_velocity.x = (self.ball_speed * -0.8);
-            self.ball_velocity.y = (self.ball_speed * -0.2);
+            self.ball_velocity.x = self.ball_speed * -0.8;
+            self.ball_velocity.y = self.ball_speed * -0.2;
             // self.ball_velocity = Vector2 { x: self.left_paddle.x, y: self.left_paddle.y };
         } else {
-            self.ball_velocity.x = (self.ball_speed * 0.8);
-            self.ball_velocity.y = (self.ball_speed * 0.2);
+            self.ball_velocity.x = self.ball_speed * 0.8;
+            self.ball_velocity.y = self.ball_speed * 0.2;
 
             // self.ball_velocity = Vector2 { x: self.right_paddle.x, y: self.right_paddle.y };
         }
