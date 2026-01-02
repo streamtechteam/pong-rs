@@ -1,4 +1,4 @@
-# Rust Pong
+# Pong-rs!
 
 A modern, remake of the classic **Pong** arcade game, built using the **Rust** programming language and the **raylib** graphics library. this is my first raylib game, so expect a lot of spaghetti code and a lot of non practical codes.
 
