@@ -128,19 +128,21 @@ impl Game {
         //     Color::WHITE,
         // );
         let mut ys: Vec<f32> = vec![];
-        for num in 2..25{
+        for num in 2..25 {
             ys.push((d.get_render_height() / 24 * num) as f32);
         }
         for num in ys {
-            d.draw_rectangle_pro(Rectangle{
-                height: 10.,
-                width: 5.,
-                x : (self.window.width_slice * 6) as f32,
-                y : num,
-            }, Vector2{
-                x: 2.5,
-                y: 5.,
-            }, 0., Color::WHITE);
+            d.draw_rectangle_pro(
+                Rectangle {
+                    height: 10.,
+                    width: 5.,
+                    x: (self.window.width_slice * 6) as f32,
+                    y: num,
+                },
+                Vector2 { x: 2.5, y: 5. },
+                0.,
+                Color::WHITE,
+            );
         }
         let text_width = d.measure_text(self.left_score.to_string().as_str(), 100);
         d.draw_text_pro(
@@ -234,12 +236,12 @@ impl Game {
         // let window_height = &d.get_render_height();
         // let window_width = &d.get_render_width();
 
-        if self.left_paddle.y > (self.window.height_slice) as f32  * 2.{
+        if self.left_paddle.y > (self.window.height_slice) as f32 * 2. {
             if d.is_key_down(ffi::KeyboardKey::KEY_W) {
                 self.left_paddle.y -= d.get_frame_time() * self.paddle_speed;
             }
         }
-        if self.left_paddle.y < (self.window.height_slice) as f32  * 10.{
+        if self.left_paddle.y < (self.window.height_slice) as f32 * 10. {
             if d.is_key_down(ffi::KeyboardKey::KEY_S) {
                 self.left_paddle.y += d.get_frame_time() * self.paddle_speed;
             }
