@@ -34,18 +34,6 @@ you may need to also install some other system dependencies
 | **Reset Game** | `R` | `R` |
 | **Quit** | `Esc` | `Esc` |
 
----
-
-## Architecture
-
-The game follows a standard **Update-Draw** loop pattern:
-
-1. **Input:** Polls keyboard state for paddle movement.
-2. **Update:** Calculates ball trajectories, paddle bounds, and collision detection.
-3. **Draw:** Renders the paddles, ball, and score text to the buffer.
-
----
-
 ## Contributing
 
 Contributions are welcome! If you'd like to add features (like AI opponents, sound effects, or a main menu), feel free to:
