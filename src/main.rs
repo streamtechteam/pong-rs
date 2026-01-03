@@ -5,6 +5,8 @@ use window::Window;
 mod game;
 use game::Game;
 
+use crate::game::UIProperties;
+
 fn main() {
     let (mut rl, thread) = raylib::init()
         .title("Simple Game")
@@ -24,6 +26,13 @@ fn main() {
                 y: (rl.get_render_height() / 12 * 6) as f32,
             },
         },
+        ui_properties: UIProperties {
+            menu_title_font_size: 150,
+            menu_start_text_font_size: 100,
+            game_title_font_size: 50,
+            game_score_font_size: 100,
+            debug_font_size: 20,
+        },
         left_paddle: Rectangle {
             height: 250.,
             width: 50.,
@@ -41,11 +50,15 @@ fn main() {
         ball_pos: Vector2 { x: 0., y: 0. },
         ball_velocity: Vector2 { x: 0., y: 0. },
         ball_speed: 10.,
+        ball_full_speed: 15.,
+        ball_init_speed: 8.,
         left_score: 0,
         right_score: 0,
+        win_score: 10,
+        is_ended: false,
+        winner: "".to_string(),
         is_running: true,
         show_debug: false,
-        // ball_y:0,
         is_started: false,
     };
 
