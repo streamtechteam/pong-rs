@@ -6,8 +6,7 @@ use raylib::{
     ffi::{self, KeyboardKey},
     math::{Rectangle, Vector2},
     misc::AsF32,
-    prelude::{RaylibDraw, RaylibDrawHandle},
-    rgui::RaylibDrawGui,
+    prelude::{RaylibDraw, RaylibDrawHandle}, rgui::RaylibDrawGui,
 };
 
 #[derive(Default)]
@@ -69,7 +68,7 @@ impl Game {
                     self.is_started = true;
                 };
             } else {
-                if (d.is_key_pressed(KeyboardKey::KEY_R)) {
+                if d.is_key_pressed(KeyboardKey::KEY_R) {
                     self.reset_game(d);
                 }
                 self.render_paddles(d);
@@ -91,7 +90,7 @@ impl Game {
             d.get_font_default(),
             "PONG-rs!",
             Vector2 {
-                x: (self.window.width_slice * 6) as f32,
+                x: (self.window.width_slice) as f32 * 6.2,
                 y: (self.window.height_slice * 2) as f32,
             },
             Vector2 {
@@ -127,35 +126,6 @@ impl Game {
             3.,
             Color::WHITE,
         );
-        // let text_width = d.measure_text("Escape = Exit!", 50);
-        // d.draw_text_pro(
-        //     d.get_font_default(),
-        //     "Escape = Exit!",
-        //     Vector2{
-        //         x: (self.window.width_slice * 6)  as f32,
-        //         y: (self.window.height_slice * 9) as f32,
-        //     },
-        //     Vector2 {
-        //         x: (text_width / 2) as f32,
-        //         y: 10.,
-        //     },
-        //     0.,
-        //     50.,
-        //     3.,
-        //     Color::WHITE,
-        // );
-
-        // if d.gui_button(
-        //     Rectangle {
-        //         height: (self.window.height_slice * 1) as f32,
-        //         width: (self.window.width_slice * 1) as f32,
-        //         x: ((self.window.width_slice * 6) - (self.window.width_slice * 1 / 2)) as f32,
-        //         y: ((self.window.height_slice * 7) - (self.window.height_slice * 1 / 2)) as f32,
-        //     },
-        //     "Exit Game",
-        // ) {
-        //     self.is_running = false;
-        // }
         d.get_key_pressed().is_some()
     }
 
@@ -323,7 +293,7 @@ impl Game {
             Color::WHITE,
         );
 
-        if (d.is_key_pressed(KeyboardKey::KEY_SPACE)) {
+        if d.is_key_pressed(KeyboardKey::KEY_SPACE) {
             self.reset_game(d);
         }
     }

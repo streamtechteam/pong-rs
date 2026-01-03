@@ -1,5 +1,5 @@
 mod window;
-use raylib::math::{Rectangle, Vector2};
+use raylib::{math::{Rectangle, Vector2}, window::{get_current_monitor, get_monitor_height, get_monitor_width}};
 use window::Window;
 
 mod game;
@@ -8,12 +8,17 @@ use game::Game;
 use crate::game::UIProperties;
 
 fn main() {
+    println!("{}",get_current_monitor());
+
     let (mut rl, thread) = raylib::init()
-        .title("Simple Game")
-        .width(1920)
-        .height(1080)
+        .title("PONG-rs")
+        .width(0)
+        .height(0)
         .fullscreen()
+        // .resizable()
         .build();
+
+    rl.set_window_size(rl.get_screen_width(), rl.get_screen_height());
     rl.set_target_fps(120);
     let mut game = Game {
         window: Window {
